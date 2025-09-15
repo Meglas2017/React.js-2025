@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+.miGrilla{
+  margin-top: 8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto; 
+  padding: 15px;
+  gap: 15px;
+}
