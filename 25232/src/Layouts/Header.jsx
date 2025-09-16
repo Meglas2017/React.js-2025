@@ -6,7 +6,7 @@ export default function Header () {
 
     return(
         <>
-            <h2>Esto es el Header</h2>
+            <h2>G-Tech</h2>
         </>
     )
 }

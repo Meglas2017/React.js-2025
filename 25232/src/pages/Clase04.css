@@ -1,0 +1,21 @@
+#root{
+    width: 100%;
+}
+.main{
+    display: flex;
+}
+
+.claseMain{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    border-radius: 20px;
+    width: 80%;
+}
+
+.cart{
+    position: fixed;
+    top: 0;
+    right: 0;
+    
+}
