@@ -2,7 +2,7 @@ import { useState } from "react";
 import Botton from "./Botton.jsx";
 import './Tarjeta.css'
 
-export default function Tarjeta ({titulo4, descripcion}) {
+export default function Tarjeta ({titulo, descripcion, url, boton}) {
 const [miClase, setMiClase] = useState("")
 
 
@@ -12,18 +12,18 @@ const handleOcultar = () => {
     console.log(miClase)
 } 
     return (
-        <div className="card">
+        <div className={`card-product ${miClase}`}>
             <h4>{titulo}</h4>
-            <picture><img src="www.google.com/fruta" alt="Sin imagen por ahora" /></picture>
+            <picture><img className="imgCard" src={url} alt="Sin imagen por ahora" /></picture>
             <p>{descripcion}</p>
-            <Botton
-                clase={""}
-                message={"botonTexto"}
+            {boton ? <Botton
+                clase={"green"}
+                message={"Comprar"}
                 funcion={handleOcultar}
-            />
+            />: <></>}
             <Botton
-                clase={miClase}
-                message={"Ocultar"}
+                clase={"red"}
+                message={"Ver más"}
                 funcion={handleOcultar}
             />
         </div>

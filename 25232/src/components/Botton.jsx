@@ -1,4 +1,4 @@
-
+import './Botton.css'
 
 
 export default function Botton ({clase, message, funcion}) {
@@ -7,7 +7,7 @@ export default function Botton ({clase, message, funcion}) {
     return (
         <>
             <button 
-                className={clase}
+                className={`miButton ${clase}`}
                 onClick={funcion}
                 >
                 {message}
