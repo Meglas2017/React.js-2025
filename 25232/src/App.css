@@ -61,3 +61,14 @@
   border-radius: 50%;
   margin-left: 2rem;
 }
+
+.nav{
+  margin: 2rem;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.288);
+  max-width: 20rem;
+  justify-self: center;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px white, -2px -2px 5px white;
+}
