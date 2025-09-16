@@ -17,5 +17,12 @@
     position: fixed;
     top: 0;
     right: 0;
-    
+    margin-right: 1rem;
+
+}
+
+.cartButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }

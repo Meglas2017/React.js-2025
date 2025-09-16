@@ -4,6 +4,7 @@ import Foot from "../Layouts/Foot.jsx"
 import Producto from "../components/Product/Product.jsx"
 import "./Clase04.css"
 import { useState, useEffect } from "react"
+import CartFloat from "../components/CartFloat/CartFloat.jsx"
 
 
 export default function Clase04 () {
@@ -83,6 +84,10 @@ export default function Clase04 () {
         setCarrito(prevCarrito => prevCarrito.filter(p => p.product !== product))
     }
 
+    const handleCartEmpty = () => {
+        setCarrito([])
+    }
+
 
     return(
         <div className="page">
@@ -99,14 +104,10 @@ export default function Clase04 () {
                         />
                     ) : <></>}
                 </div>
-                <section className="cart">
-                    <h3>🛒 Carrito 🛒</h3>
-                    <ul>
-                        {carrito ? carrito.map((producto, index)=>
-                            <li key={index}>{producto.product}</li>
-                        ) : <></>}
-                    </ul>
-                </section>
+                <CartFloat
+                    carrito = {carrito}
+                    handleCartEmpty = {handleCartEmpty}
+                />
             </main>
             <Foot/>
         </div>
