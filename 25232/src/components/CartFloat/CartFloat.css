@@ -1,4 +1,55 @@
-.heatCart{
+.cart{
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* gap: 1rem; */
+    margin-top: 2rem;
+    z-index: 100;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+}
+.iconCart{
+    position: sticky;
+    top: 1rem;
+    background-color: rgb(98, 102, 102);
+    border-radius: 10px;
+    height: 3rem;
+    width: 1.2rem;
+    margin: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    z-index: 101;
+}
+
+.listCart{
+    position: fixed; /* saca el carrito del flujo */
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 16rem;
+    background: #be161627;
+    padding: 1rem;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+
+.listCart.hide {
+  transform: translateX(100%);
+}
+
+.listCart.show {
+  transform: translateX(0);
+}
+
+
+/* .heatCart{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,3 +67,45 @@
 .heatCart div:hover{
     transform: scale(1.5);
 }
+
+.show{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-right: 1rem;
+
+}
+
+.hide{
+    position: fixed;
+    top: 0;
+    right: -12rem;
+    margin-right: 1rem;
+}
+
+.cartButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.verticalNav{
+
+}
+
+.cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconCart{
+    background-color: gray;
+    width: 1rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding: 0.3rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
