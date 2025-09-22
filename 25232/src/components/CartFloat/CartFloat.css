@@ -1,18 +1,34 @@
 .cart{
     position:relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    min-height: 100%;
     /* gap: 1rem; */
     margin-top: 2rem;
     z-index: 100;
     transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
 }
+.lista{
+   width: 80%; 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 0.4rem;
+   font-size: smaller;
+   background: #07060693;
+   border-radius: 20px;
+   box-shadow: 1px 1px 40px black;
+
+}
 .iconCart{
+    justify-self: left;
     position: sticky;
     top: 1rem;
+    /* overflow-y: auto; */
     background-color: rgb(98, 102, 102);
     border-radius: 10px;
     height: 3rem;
@@ -28,26 +44,35 @@
 }
 
 .listCart{
+    display: flex;
     position: fixed; /* saca el carrito del flujo */
     top: 0;
     right: 0;
     height: 100vh;
     width: 16rem;
-    background: #be161627;
     padding: 1rem;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    /* box-shadow: -2px 0 10px rgba(0,0,0,0.2); */
     transition: transform 0.5s ease;
     z-index: 1;
 }
 
-.listCart.hide {
-  transform: translateX(100%);
+.hide {
+  transform: translateX(75%);
 }
 
-.listCart.show {
+.show {
   transform: translateX(0);
 }
-
+.cartButtons{
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 5rem;
+    width: 100%;
+}
 
 /* .heatCart{
     display: flex;

@@ -1,6 +1,3 @@
-import Header from "../Layouts/Header.jsx"
-import Nav from"../Layouts/Nav.jsx"
-import Foot from "../Layouts/Foot.jsx"
 import Producto from "../components/Product/Product.jsx"
 import "./Clase04.css"
 import { useState, useEffect } from "react"
@@ -72,27 +69,58 @@ export default function Clase04 () {
         ];
     const [carrito, setCarrito] = useState([])
 
+    /**Uso el hook effect para obtener la ultima actualizacion
+     * e imprimirla en consola. Imprimir desde la funcion que lo actualiza
+     * no me da el resultado final.
+     */
     useEffect(()=>{
         console.log(carrito)
     },[carrito])
 
-    const handleCartAdd = (product) => {
-        setCarrito(prevCarrito => [...prevCarrito, product])
+    const handleCartAdd = (producto) => {
+        console.log(producto)
+        setCarrito(prevCarrito => {
+            /**Primero crea un nuevo array 
+             * y busca con metodo find el item segun el id del producto.
+             * Si esta dentro del array, la variable es true, sino false */
+            const productoExistente = prevCarrito.find(item => item.id === producto.id);
+            
+            /**Si la variable era true, el producto ya estaba en el carrito
+             * actualiza la cantidad sumandole 1
+             */
+            if (productoExistente) {
+                // console.log(productoExistente)
+                return prevCarrito.map(item =>
+                item.id === producto.id
+                    ? { ...item, cantidad: item.cantidad + 1 }
+                    : item
+                );
+            } else {
+                // console.log(productoExistente)
+                /**Si no estaba el producto en el carrito,
+                 * agrega el campo cantidad con valor 1
+                 */
+                return [...prevCarrito, { ...producto, cantidad: 1 }];
+            }
+        });
     }
 
-    const handleCartDelete = (product) => {
-        setCarrito(prevCarrito => prevCarrito.filter(p => p.product !== product))
+    const handleCartDelete = (id) => {
+        /**Crea un array con el ultimo valor para evitar errores,
+         * va cargando en el nuevo array todos los productos 
+         * mientras difieran en la comparacion del campo product.
+         */
+        setCarrito(prevCarrito => prevCarrito.filter(p => p.id !== id))
     }
 
     const handleCartEmpty = () => {
+        /**Setea carrito con un array vacio */
         setCarrito([])
     }
 
 
     return(
         <div className="page">
-            <Header/>
-            <Nav/>
             <main className="main">
                 <div className="claseMain">
                     {productos ? productos.map((producto, index)=>
@@ -109,7 +137,6 @@ export default function Clase04 () {
                     handleCartEmpty = {handleCartEmpty}
                 />
             </main>
-            <Foot/>
         </div>
     )
 }
