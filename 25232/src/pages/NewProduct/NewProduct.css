@@ -1,14 +1,6 @@
-.inputDiv{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-.blockInputs{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
+
+.productForm{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    width: 80%;
 }

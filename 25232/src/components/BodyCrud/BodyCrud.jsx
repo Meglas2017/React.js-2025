@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
+import "./BodyCrud.css"
 
 
 export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, handleChangeForm, dateBuyProduct, setDateBuyProduct}) {
@@ -14,6 +15,7 @@ export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, ha
     const inputRefs = useRef({});//Manejo de tabulacion para ir navegando en los campos de texto
     const validationClass = "inputValidation"
     const [loading, setLoading] = useState(false)
+    const [total, setTotal] = useState(0)
 /**------useEffects------------- */
     /**Utilizo useEffects para llamar a funcion de obtener CUBS$ ni bien cargo la pagina */
     useEffect(()=>{
@@ -21,6 +23,47 @@ export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, ha
         getCubs$()
 
     },[])
+    /**Actualizacion del total calculado */
+    useEffect(()=>{
+        const { 
+            costPriceProduct,
+            ivaProduct,
+            costShipmentProduct,
+            gainProduct
+        } = newProduct
+
+        /**Parseo a flotante los valores para calcular el total */
+        const costPrice = parseFloat(costPriceProduct)
+        const iva = parseFloat(ivaProduct)
+        const costShipment = parseFloat(costShipmentProduct)
+        const gain = parseFloat(gainProduct)
+
+        /**Comienzo a calcular el total */
+        if (newProduct.costUSS){//Si el checkbox esta tildado
+            try {
+                setTotal(
+                    parseFloat((
+                        costPrice + //Costo
+                        (costPrice * iva / 100) + //Calculo del iva sobre el costo
+                        (costPrice * costShipment / 100) + //Calculo del envio sobre el costo
+                        (costPrice * gain / 100))//Calculo de la ganancia sobre el costo
+                        *(parseFloat(dolar.dolar))).toFixed(2))//Multiplico por el dolar
+        
+            } catch (error) {
+                console.log(error)
+                setTotal("Error en el cálculo")
+            }
+            
+                } else {//Si el checkbox no esta tildado
+            setTotal(
+                parseFloat(
+                    costPrice + 
+                    (costPrice * iva / 100) + 
+                    (costPrice * costShipment / 100) + 
+                    (costPrice * gain / 100)).toFixed(2))            
+        }
+
+    },[newProduct, dolar])//Escucho cambios en los estados 
 /**-------Funciones------------- */
 
     /**Funcion de consulta para CUBS$ */
@@ -164,14 +207,14 @@ export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, ha
                     </div>
                 </div>
                 <div className="blockInputs">
-                    <div className="inputDiv">
-                        <label htmlFor="descriptionProduct">Descripción</label>
-                        <input value={newProduct.descriptionProduct} onChange={handleChangeForm} id="descriptionProduct" name="descriptionProduct" type="text" />
+                    <div className="inputTextArea">
+                        <label htmlFor="descriptionProduct">Descripción del articulo</label>
+                        <textarea className="descriptionArea" value={newProduct.descriptionProduct} onChange={handleChangeForm} id="descriptionProduct" name="descriptionProduct"  />
                     </div>
                 </div>
                 <div className="blockInputs">
                     <div className="inputDiv">
-                        <label htmlFor="categoryProduct">Categoría</label>
+                        <label htmlFor="categoryProduct">Rubro</label>
                         <select 
                                 placeholder={validationErrors.categoryProduct && validationErrors.categoryProduct}
                                 className={validationErrors.categoryProduct && validationClass}  
@@ -299,7 +342,7 @@ export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, ha
                         />
                     </div>
                 </div>
-                <div className="blockInputs">
+                <div className="blockInputs numberInputs">
                     <div className="inputDiv">
                         <label htmlFor="costPriceProduct">Costo $</label>
                         <input 
@@ -382,8 +425,8 @@ export default function BodyCrud ({newProduct, handleSubmit, handleEmptyForm, ha
                         />
                     </div>
                 </div>
-                <div className="blockInputs">
-                    <p>Precio de venta calculado: ${}</p>
+                <div className="blockInputs total">
+                    <p>Precio de venta calculado: ${total}</p>
                 </div>
                 <div className="blockInputs">
                     <button onClick={handleEmptyForm}>Vaciar formulario</button>

@@ -86,13 +86,16 @@ export default function NewProduct () {
     }
 
     return(
-        <BodyCrud
-            newProduct = {newProduct}
-            handleSubmit = {handleSubmit}
-            handleEmptyForm = {handleEmptyForm}
-            handleChangeForm = {handleChangeForm}
-            dateBuyProduct = {dateBuyProduct}
-            setDateBuyProduct = {setDateBuyProduct}
-        />
+        <section className="productForm">
+           <BodyCrud
+                newProduct = {newProduct}
+                handleSubmit = {handleSubmit}
+                handleEmptyForm = {handleEmptyForm}
+                handleChangeForm = {handleChangeForm}
+                dateBuyProduct = {dateBuyProduct}
+                setDateBuyProduct = {setDateBuyProduct}
+            /> 
+        </section>
+        
     )
 }
