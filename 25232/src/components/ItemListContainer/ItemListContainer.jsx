@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
+import { Boton } from "../Boton";
 
 export const ItemListContainer = ({ titulo }) => {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ export const ItemListContainer = ({ titulo }) => {
       <h1>{titulo}</h1>
       <section className="sectionList">
         
-        <ItemList lista={products} />
+        <ItemList lista={products}/>
       </section>
     </>
   );

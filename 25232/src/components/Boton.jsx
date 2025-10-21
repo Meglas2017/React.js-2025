@@ -1,16 +1,13 @@
-export const Boton = ({ texto, color }) => {
+export const Boton = ({ text = "Botón", color = "gray", handleClick, id }) => {
   const estilos = {
     backgroundColor: color,
     color: "white",
   };
 
-  const saludar = () => {
-    alert("Boton clickeado");
-  };
 
   return (
-    <button style={estilos} onClick={saludar}>
-      {texto}
+    <button style={estilos} onClick={()=>handleClick(id)}>
+      {text}
     </button>
   );
 };
