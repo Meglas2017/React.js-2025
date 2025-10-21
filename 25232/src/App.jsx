@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div>
+        <div className="divMain">
           <Header />
           {/* Dejamos fuera del Routes lo que queremos que no se vuelva a renderizar al navegar */}
           <Routes>

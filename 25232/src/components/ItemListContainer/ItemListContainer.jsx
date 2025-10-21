@@ -21,9 +21,12 @@ export const ItemListContainer = ({ titulo }) => {
   }, []);
 
   return (
-    <section>
+    <>
       <h1>{titulo}</h1>
-      <ItemList lista={products} />
-    </section>
+      <section className="sectionList">
+        
+        <ItemList lista={products} />
+      </section>
+    </>
   );
 };
