@@ -1,4 +1,6 @@
 .product-item {
+  align-self: center;
+  justify-self: center;
   background-color: #1e1e1e; /* Gris más claro que el fondo */
   border: 1px solid #333;
   border-radius: 0.5rem;
