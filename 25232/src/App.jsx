@@ -11,15 +11,17 @@ function App() {
       <BrowserRouter>
         <div className="divMain">
           <Header />
-          {/* Dejamos fuera del Routes lo que queremos que no se vuelva a renderizar al navegar */}
           <Routes>
             <Route
               path="/"
               element={<ItemListContainer titulo={"Bienvenidos"} />}
             />
+            <Route
+              path="/category/:category"
+              element={<ItemListContainer/>}
+            />
             <Route path="/detail/:id" element={<ItemDetailContainer />} />
           </Routes>
-          {/* Dejamos fuera del Routes lo que queremos que no se vuelva a renderizar al navegar */}
           <Footer />
         </div>
       </BrowserRouter>
