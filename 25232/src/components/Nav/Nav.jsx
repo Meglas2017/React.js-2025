@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useCarContext } from "../../context/CarContextProvider";
 
 export const Nav = () => {
+
+  //Desestructuro las funciones del contexto para carrito
+  const { addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct } = useCarContext()
+
+
+
   //Dejamos los Link preparados para cuando hagamos filtrado por categoria
   //Por ahora, quedan de vista, pero sirven al tocar para escribir la ruta
   //en la barra de busqueda

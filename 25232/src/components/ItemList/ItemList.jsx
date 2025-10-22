@@ -15,10 +15,17 @@ export const ItemList = ({ lista, category }) => {
     <>
       {lista.length ? (
         lista
+        /**Filtro por categoria si hay algo en category */
         .filter(prod => !category || prod.category === category)
+        /**Por cada producto en la lista renderizo un ITEM con un BOTON como children*/
         .map((prod) => (
           <Item key={prod.id} {...prod}>
-            <Boton text={"Agregar al carrito"} color={"#00800067"} handleClick={handleAddToCar} id={prod.id}/>
+            <Boton 
+              text={"Agregar al carrito"} 
+              color={"#00800067"} 
+              handleClick={handleAddToCar} 
+              id={prod.id}
+              />
           </Item>
         ))
       ) : (
