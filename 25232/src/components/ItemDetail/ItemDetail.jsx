@@ -1,6 +1,12 @@
 import { Item } from "../Item/Item";
+import { useCarContext } from "../../context/CarContextProvider";
+
 
 export const ItemDetail = ({ detail }) => {
+    const { car, addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct } = useCarContext()
+
+
+
   return (
     //Si ustedes deciden NO reutilizar el componente Item y aca hacer
     //una seccion totalmente nueva, pueden despreocuparse del Link en ItemList.
@@ -9,7 +15,7 @@ export const ItemDetail = ({ detail }) => {
     //en Item y dejar como estaba el ItemList, sin modificaciones
 
     <Item {...detail}>
-      <button>Enviar al carrito</button>
+      <button onClick={()=>addProductToCar(detail)}>Enviar al carrito</button>
     </Item>
   );
 };

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { createContext } from "react"
 
 
@@ -8,8 +8,16 @@ export const CarContext = createContext()
 
 export function CarContextProvider ({children}) {
     const [ car, setCar] = useState([])
+    const [ total, setTotal ] = useState (0)
+
+    useEffect(() => {
+        const newTotal = car.reduce((acc, prod) => acc + (prod.price * prod.quantity), 0)
+        setTotal(newTotal)
+    }, [car])
 
     const addProductToCar = (product) => {
+        console.log(product);
+        
         setCar(prev => [...prev,  product])
         //Abre un prev del car y agrega el 
         // producto si no existe, luego 
@@ -40,9 +48,14 @@ export function CarContextProvider ({children}) {
         // uno a cantidad con tope en cero
         // donde elimina el producto del car
     }
+    const checkout = () => {
+        const buy = confirm("¿Desea finalizar la compra?")
+        console.log("Compra:", buy);
+        
+    }
 
     return (
-        <CarContext.Provider value={{addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct}}>
+        <CarContext.Provider value={{car, total, addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct, checkout}}>
             {children}
         </CarContext.Provider> 
     )

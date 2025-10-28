@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import { Item } from "../Item/Item";
 import { Boton } from "../Boton";
+import { useCarContext } from "../../context/CarContextProvider";
+
 
 export const ItemList = ({ lista, category }) => {
-  console.log(category);
+  const { car, addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct } = useCarContext()
   
 
-  const handleAddToCar = (id) => {
-    console.log(id);
-    
-  }
+  
 
   return (
     <>
@@ -23,7 +22,7 @@ export const ItemList = ({ lista, category }) => {
             <Boton 
               text={"Agregar al carrito"} 
               color={"#00800067"} 
-              handleClick={handleAddToCar} 
+              handleClick={()=>addProductToCar(prod)} 
               id={prod.id}
               />
           </Item>
