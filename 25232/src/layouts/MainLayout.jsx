@@ -1,0 +1,12 @@
+
+
+
+export const MainLayout = () => {
+
+
+    return(
+        <>
+        
+        </>
+    )
+}

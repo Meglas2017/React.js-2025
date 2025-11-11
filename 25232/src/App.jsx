@@ -6,6 +6,9 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetail
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 import { CarContextProvider } from "./context/CarContextProvider";
 import { Cart } from "./components/Cart/Cart";
+import { MainLayout } from "./layouts/MainLayout.jsx";
+import { AdminLayout } from "./layouts/AdminLayout.jsx";
+import { RutaProtegida } from "./components/RutaProtegida/RutaProtegida";
 
 
 function App() {
@@ -16,25 +19,37 @@ function App() {
       <BrowserRouter>
         <CarContextProvider>
           <div className="divMain">
-            <Header />
+            
             <Routes>
-              <Route
-                path="/"
-                element={<ItemListContainer titulo={"Bienvenidos"} />}
-              />
-              <Route
-                path="/category/:category"
-                element={<ItemListContainer/>}
-              />
-              <Route 
-                path="/detail/:id" 
-                element={<ItemDetailContainer />} 
-              />
-              <Route
-                path="/cart"
-                element={<Cart/>}
-              />
-            </Routes>
+              <Route element={<MainLayout />} >
+                <Route
+                  path="/"
+                  element={<ItemListContainer titulo={"Bienvenidos"} />}
+                />
+                <Route
+                  path="/category/:category"
+                  element={<ItemListContainer/>}
+                />
+                <Route 
+                  path="/detail/:id" 
+                  element={<ItemDetailContainer />} 
+                />
+                <Route
+                  path="/cart"
+                  element={<Cart/>}
+                />
+                
+                </Route>
+                <Route path="/admin" element={<AdminLayout/>}>
+                  <Route index element={<Login/>}/>
+                  <Route path="alta-productos" element={
+                    <RutaProtegida>
+                      <ProductFormContainer/>
+                    </RutaProtegida>
+                  }
+                  />
+                </Route>
+              </Routes>
             <Footer />
           </div>
         </CarContextProvider>
