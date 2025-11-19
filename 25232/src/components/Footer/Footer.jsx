@@ -1,10 +1,9 @@
-import "./Footer.css"
-
+import "./Footer.css";
 
 export const Footer = () => {
   return (
     <footer>
-      <h3>Copyrigth ©</h3>
+      <p>@2025 Contenido protegido por Copyrigth</p>
     </footer>
   );
 };

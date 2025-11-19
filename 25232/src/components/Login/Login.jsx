@@ -1,44 +1,59 @@
-import { useState } from "react"
-import { useAuthContext } from "../../context/AuthContext/useAuthContext"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { useAuthContext } from "../../context/AuthContext/useAuthContext";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
+export const Login = () => {
+    const [userForm, setUserForm] = useState({ name: "", password: "" });
+    const {user, login} = useAuthContext();
 
-export const Login = ()  => {
-    const [userForm, setUserForm] = useState({name:"", password:""})
-    const {user, login}= useAuthContext()
-    const navigate = useNavigate()//Invoco Hook para navegar
+    const navigate = useNavigate()
 
-    if(user){
-        return <Navigate to="/admin/alta-productos" replace/>
+    if (user) {
+        return <Navigate to="/admin/alta-productos" />;
     }
+
+
+    const handleChange = (e) => {
+        const{ name, value }= e.target; 
+        setUserForm({...userForm, [name]: value});
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const success = login (userForm.name, userForm.password)
-        if(success){
-            navigate("/admin/alta-productos")
+        const success = login(userForm.name, userForm.password);
+
+        if (success) {
+            navigate("/admin/alta-productos");
         } else {
-            alert ("Credenciales incorrectas")
-            setUserForm({name:"", password:""})
+            alert("Credenciales incorrectas");
+            setUserForm({name: "", password: ""});
         }
-    }
+    };
 
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setUserForm({
-            ...userForm,
-            [name]: value
-        })
-    }
+    return (
+        <form className="session-form" onSubmit={handleSubmit}>
+            <h2>Iniciar sesión</h2>
+            <div>
+                <label>Usuario:</label>
+                <input 
+                    type="text"
+                    name="name"
+                    value={userForm.name}
+                    onChange={handleChange} 
+                />
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input 
+                    type="password"
+                    name="password"
+                    value={userForm.password}
+                    onChange={handleChange} 
+                />
+            </div>
+            <button  type="submit">Iniciar sessión</button>
+        </form>
 
-
-    return(
-        <>
-            <form>
-                <input type="text" name="name" placeholder="Nombre" value={userForm.name} onChange={handleChange}/>
-                <input type="password" name="password" placeholder="Password" value={userForm.password} onChange={handleChange}/>
-                <button type="submit" onClick={handleSubmit}>Login</button>
-            </form>
-        </>
-    )
-}
+    );
+};

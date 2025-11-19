@@ -1,0 +1,36 @@
+
+@media(min-width: 720px){
+    .productos-panaderia-grid{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap: 30px;
+    padding: 10px 0;
+    
+    }
+}
+
+@media(min-width: 960px){
+    .productos-panaderia-grid{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap: 30px; 
+    padding: 10px 0;
+    
+    }
+}
+
+@media(min-width: 1140px){
+    .productos-panaderia-grid{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    gap: 30px; 
+    padding: 10px 0;
+    
+    }
+}
+
+.subtitle{
+    color: rgba(255, 0, 0, 0.452);
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+}

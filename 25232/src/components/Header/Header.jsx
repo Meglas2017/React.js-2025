@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import { Nav } from "../Nav/Nav";
-import logo from "../../assets/react.svg"
+import "./Header.css";
 
 export const Header = () => {
   return (
     <header>
-      <img className="logoReact" src={logo} alt="Logo de React.js" />
+      <Link to={"/"}>
+      <img className="logoImg" src="/images/logo.png" alt="logo-panaderia" />
+      <h1 className="logo-panaderia">Electrónica</h1>
+      </Link>
       <Nav />
     </header>
   );

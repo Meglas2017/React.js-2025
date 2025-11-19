@@ -1,34 +1,40 @@
-/**Simulacion de componente LOGIN  de administrador*/
-import { useState } from "react"
+import { useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(()=>{
-        const saved = sessionStorage.getItem("session")
-        if(saved){
-            return JSON.parse(saved)
+    const [user, setUser] = useState(() => {
+        const saved = sessionStorage.getItem("session");
+        if (saved) {
+           return JSON.parse(saved); 
         }
 
-        return null
-    })
-
+        return null;
+    });
 
     const login = (name, password) => {
         if(name === "admin" && password === "1234"){
-            const session = { name }
-            setUser(session)
-            sessionStorage.setItem("session", JSON.stringify(session))
-            return true
+            const session = { name };
+            setUser(session);
+            sessionStorage.setItem("session", JSON.stringify(session));
+            return true;
         }
-        return false
-    }
+        return false;
+    };
 
     const logout = () => {
-        sessionStorage.removeItem("session")
-        setUser(null)
-        
-    }
+        sessionStorage.removeItem("session");
+        setUser(null);
+        alert("Cerrando sesión");
 
-    return <AuthProvider value={{user,login, logout}}>
-        {children}
-    </AuthProvider>
-}
+    };
+
+    return (
+        <AuthContext.Provider value={{user,login,logout}}>
+            {children}
+        </AuthContext.Provider>
+    );
+
+
+
+
+};

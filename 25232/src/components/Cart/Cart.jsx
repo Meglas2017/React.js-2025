@@ -1,47 +1,50 @@
-import "./Cart.css"
-import { useCarContext } from "../../context/CarContextProvider"
-import { Item } from "../Item/Item"
-import { useEffect } from "react"
+import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext/useCartContext";
+import { Item } from "../Item/Item";
+import "./Cart.css";
 
 export const Cart = () => {
+  const { cart, clearCart, deleteItem, total, checkout } = useCartContext();
 
-    
-    // const { cart, clearCart, deleteItem, total, checkout } = CarContextProvider()
-    const { car, total, addProductToCar, cleanCar, deleteProduct, plusProduct, minusProduct, checkout } = useCarContext()
-    
-    useEffect(() => {
-            console.log(car);
+  return (
+    <section className="item-list-container">
+      <h2>Carrito de compras</h2>
+
+      {cart.length ? (
+        cart.map((prod) => (
+          
+            <Item key={prod.id} {...prod}>
+              <span>Cantidad: {prod.quantity}</span>
+              <button className="btn-panaderia btn-panaderia-cart-elimimar" onClick={() => deleteItem(prod.id)}>
+                Eliminar
+              </button>
+            </Item>
+          
+        ))
+      ) : (
+        <p>Tu carrito está vacío</p>
+      )}
+
+      {cart.length ? (
+        
+            <div className="btn-container">
+              <div className="total-pagar">
+                <p>Total a pagar: ${total()}</p>
+              </div>
+              <button className="btn-panaderia" onClick={checkout}>
+                Finalizar compra
+              </button>
+              <button className="btn-panaderia" onClick={clearCart}>
+                Vaciar carrito
+              </button>
             
-        }, [car])
-
-
-
-    return(
-        <>
-            <section className="item-list-container">
-                <h2>Carrito de compra</h2>
-
-                {car.length ? car.map((prod) => (
-                    <Item
-                        key={prod.id}
-                        {...prod}
-                    >
-                        <span>Cantidad: {prod.quantity}</span>
-                        <button className="btn" onClick={()=> deleteProduct(prod.id)}>Eliminar producto</button>
-                    </Item>
-                )) : <h3>El carrito está vacío</h3>}
-
-                {car.length ? 
-                    <div className="btn-container">
-                        <button onClick={checkout}>Finalizar compra</button>
-                        <button onClick={cleanCar}>Vaciar carrito</button>
-                        <div>
-                            <h3>Total: ${total}</h3>
-                        </div>
-                        
-                    </div> 
-                    : null}
-            </section>
-        </>
-    )
-}
+        </div>
+        
+      ) : (
+        <Link className="btn-panaderia" to="/">
+          Volver al inicio
+        </Link>
+      )}
+    </section>
+  );
+};

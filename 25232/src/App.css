@@ -1,15 +1,8 @@
 #root {
-  width: 100%;
-  /* max-width: 1280px; */
-  margin: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.divMain{
-  width: 100%;
 }
 
 .logo {
@@ -46,24 +39,4 @@
 
 .read-the-docs {
   color: #888;
-}
-.sectionList{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 1rem;
-}
-.logoReact{
-  width: 5rem;
-  animation: logo-spin infinite 20s linear;
-}
-nav{
-  background-color: #88888818;
-  width: 100%;
-}
-nav ul{
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  list-style: none;
 }

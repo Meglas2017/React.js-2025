@@ -1,19 +1,73 @@
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/***/
+section{
+  display: grid;
+  justify-content: center;
+
+}
 .product-item {
-  align-self: center;
-  justify-self: center;
-  background-color: #1e1e1e; /* Gris más claro que el fondo */
+  display: block;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #1e1e1e; 
   border: 1px solid #333;
   border-radius: 0.5rem;
   padding: 1rem;
-  max-width: 15.625rem; /* 250px */
-  color: #f5f5f5;
+  max-width: 15.625rem; 
+  color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 10px 4px;
+  height: -webkit-fill-available; 
 }
 
 .product-item img {
   width: 100%;
-  height: auto; /* mantiene proporción */
+  height: auto; 
   display: block;
 }
 
@@ -25,17 +79,19 @@
 .product-item a {
   text-decoration: none;
   color: inherit;
-  display: block; /*hacemos que el link tome todo el bloque del article y sea clickeable*/
+  display: block; 
+  
 }
 
 .product-item p {
-  margin: 0.375rem 0; /* 6px */
+  margin: 0.375rem 0;
 }
 
 .product-title {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #ffcc66;
+  color: #fa1111;
+  text-shadow: #807e7e  1px 1px 15px;
 }
 
 .product-actions {
@@ -43,7 +99,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  
 }
 .product-actions .btn .btn-add {
   margin: 1rem;
+}
+
+button:hover{
+  border-color: #ffcc66;
+  background-color: #fac65e;
 }

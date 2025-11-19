@@ -1,0 +1,51 @@
+ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+
+nav ul li a {
+  display: inline-flex;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+
+  text-align: center;
+  padding: 14px 16px;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+  text-decoration: none;
+  /**color: #111111;**/
+  background-color: #111111;
+  color:#ffffff;
+}
+nav ul .opcion-carrito:hover{
+  background-color: #111111;
+}
+.in-cart{
+  background-color: red;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25em 0.25em;
+  display: inline-block;
+  min-width: 25px; 
+  text-align: center;
+  margin-left: 0.25rem;
+  justify-content: center;
+  text-align: center;
+}
+.cart-container:hover{
+ background-color: #111111;
+}
